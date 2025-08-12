@@ -16,6 +16,12 @@ namespace BookAPI
             // Here we can add mapping for routes and other configurations
             app.MapControllers(); // with this, everything will be automatically mapped to the controllers we created
 
+            // Adding a redirect
+            app.MapGet("/", () =>
+            {
+                return Results.Redirect("api/books"); // if someone goes to the root URL, they will be redirected to the books API endpoint
+            });
+
             app.Run();
         }
     }
