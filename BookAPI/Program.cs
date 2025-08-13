@@ -25,6 +25,9 @@ namespace BookAPI
             // Then, this is build the web application startup
             var app = builder.Build();
 
+            // Now, here we add the CORS policy to the middleware pipeline, we need to specify the name of the policy we created earlier
+            app.UseCors("MyCors");
+
             // Here we can add mapping for routes and other configurations
             app.MapControllers(); // with this, everything will be automatically mapped to the controllers we created
 
