@@ -10,6 +10,18 @@ namespace BookAPI
             // Here we can add additional services to the builder
             builder.Services.AddControllers(); // we tell our application that we've created controllers and we want to use them inside the application
 
+            // Now, we need to enable CORS (Cross-Origin Resource Sharing) to allow our Angular application to communicate with this API
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyCors", builder => // name and define a CORS policy
+                {
+                    builder
+                    .WithOrigins("http://localhost:4200") // the origin of our Angular application
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
             // Then, this is build the web application startup
             var app = builder.Build();
 
